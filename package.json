@@ -1,0 +1,19 @@
+{
+  "name": "sentei",
+  "version": "0.1.0",
+  "bin": "bin/cli.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "fuse.js": "^3.2.1",
+    "inquirer": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/fuse": "^2.6.0",
+    "@types/inquirer": "^0.0.42",
+    "@types/node": "^10.5.2",
+    "typescript": "^2.9.2"
+  }
+}

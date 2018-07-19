@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2015",
+    "lib": [
+      "es2015",
+      "es2016"
+    ],
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "./bin/cli.ts"
+  ]
+}
