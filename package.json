@@ -7,12 +7,16 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@types/chalk": "^2.2.0",
+    "chalk": "^2.4.1",
     "fuse.js": "^3.2.1",
-    "inquirer": "^6.0.0"
+    "inquirer": "^6.0.0",
+    "meow": "^5.0.0"
   },
   "devDependencies": {
     "@types/fuse": "^2.6.0",
     "@types/inquirer": "^0.0.42",
+    "@types/meow": "^4.0.1",
     "@types/node": "^10.5.2",
     "typescript": "^2.9.2"
   }

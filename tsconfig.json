@@ -14,6 +14,7 @@
     ]
   },
   "include": [
+    "./types/*.d.ts",
     "./bin/cli.ts"
   ]
 }
