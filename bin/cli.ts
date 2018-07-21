@@ -1,6 +1,5 @@
 import * as util from 'util'
 import * as child_process from 'child_process'
-import * as Fuse from 'fuse.js'
 import * as inquirer from 'inquirer'
 import meow from 'meow'
 import chalk from 'chalk'
@@ -56,20 +55,35 @@ process.stdout.write('\x1Bc')
       choices: branches,
       pageSize: rows - 3
     }) as { target: string[] }
-    let isFail = false
+    const results = {}
+    target.forEach((b)=> results[b] = null)
     for (const branch of target) {
       try {
-        await exec(`git branch -${cli.flags.force ? 'D' : 'd'} ${branch}`)
+        const { stderr } = await exec(`git branch -${cli.flags.force ? 'D' : 'd'} ${branch}`)
+        results[branch] = true
       } catch (e) {
-        this.isFail = true
+        results[branch] = false
       }
     }
-    if (!isFail) {
-      console.log(chalk.greenBright.bold(`Delete ${target.length} branches.`))
-    } else {
-      console.error(chalk.red.bold('Error.'))
-      process.exit(1)
+    const successLength = Object.values(results).filter(r => !!r).length
+    const failLength = Object.values(results).filter(r => !r).length
+
+    if (successLength) {
+      console.log(chalk.greenBright.bold(`Delete ${successLength} branches.`))
     }
+    if (failLength) {
+      console.error(chalk.red.bold(`Failed delete ${failLength} branches.`))
+    }
+    console.log(chalk.bold('results:'))
+    console.log(
+      Object.entries(results).map(([name, result]) => {
+        if (result) {
+          return `  ${chalk.green('✓')} ${name}`
+        } else {
+          return `  ${chalk.red('✘')} ${name}`
+        }
+      }).join("\n")
+    )
   } catch (e) {
     console.log(e)
     process.exit(1)
