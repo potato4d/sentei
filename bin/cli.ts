@@ -47,6 +47,12 @@ process.stdout.write('\x1Bc')
   const branches = (await exec (`git branch | sed 's/ //g'`)).stdout.split("\n").filter((b)=> {
     return b && !b.includes('*') && (cli.flags.safety ? (!['master', 'develop', 'release'].includes(b)) : true)
   })
+
+  if (!branches.length) {
+    console.log(chalk.bold('No deleteable branches.'))
+    process.exit(0)
+  }
+
   try {
     const { target } = await inquirer.prompt({
       name: 'target',
