@@ -1,7 +1,9 @@
 {
   "name": "sentei",
-  "version": "0.3.0",
-  "bin": "bin/cli.js",
+  "version": "0.3.4",
+  "bin": {
+    "sentei": "bin/cli.js"
+  },
   "license": "MIT",
   "scripts": {
     "build": "tsc"
