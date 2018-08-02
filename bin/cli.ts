@@ -14,7 +14,7 @@ const cli = meow(`
 
   Options
     --force, -f force delete
-    --safety, -s protect branch if ['master', 'develop', 'release'].includes(branch)
+    --all, -a include master, develop, release branches for deletion
 `,
   {
     flags: {
@@ -45,7 +45,7 @@ process.stdout.write('\x1Bc')
   }
 
   const branches = (await exec (`git branch | sed 's/ //g'`)).stdout.split("\n").filter((b)=> {
-    return b && !b.includes('*') && (cli.flags.safety ? (!['master', 'develop', 'release'].includes(b)) : true)
+    return b && !b.includes('*') && (cli.flags.all ? true : (!['master', 'develop', 'release'].includes(b)))
   })
 
   if (!branches.length) {

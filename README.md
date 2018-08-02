@@ -26,7 +26,7 @@ $ sentei
 
   Options
     --force, -f force delete
-    --safety, -s protect branch if ['master', 'develop', 'release'].includes(branch)
+    --all, -a include master, develop, release branches for deletion
 ```
 
 ## Contribution
