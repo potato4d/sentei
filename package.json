@@ -1,6 +1,6 @@
 {
   "name": "sentei",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "bin": {
     "sentei": "bin/cli.js"
   },
@@ -10,13 +10,13 @@
   },
   "repository": "https://github.com/potato4d/sentei",
   "dependencies": {
-    "@types/chalk": "^2.2.0",
     "chalk": "^2.4.1",
     "fuse.js": "^3.2.1",
     "inquirer": "^6.0.0",
     "meow": "^5.0.0"
   },
   "devDependencies": {
+    "@types/chalk": "^2.2.0",
     "@types/fuse": "^2.6.0",
     "@types/inquirer": "^0.0.42",
     "@types/meow": "^4.0.1",
